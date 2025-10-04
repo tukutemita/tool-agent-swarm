@@ -1,0 +1,26 @@
+agents:
+  pm:
+    endpoint: http://localhost:7001/v1/chat
+    system_prompt: orchestrator/prompts/pm.system.md
+    model: local-pm
+  A:
+    endpoint: http://localhost:7001/v1/chat
+    system_prompt: orchestrator/prompts/worker.system.md
+    model: local-worker
+  B:
+    endpoint: http://localhost:7002/v1/chat
+    system_prompt: orchestrator/prompts/worker.system.md
+    model: local-worker
+  C:
+    endpoint: http://localhost:7003/v1/chat
+    system_prompt: orchestrator/prompts/worker.system.md
+    model: local-worker
+timeouts:
+  request_sec: 120
+  connect_sec: 10
+retries:
+  max_attempts: 2
+  base_backoff_sec: 2
+security:
+  token_env: ORCHESTRATOR_API_TOKEN
+  enabled: false
